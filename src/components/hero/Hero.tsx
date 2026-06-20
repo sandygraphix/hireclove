@@ -45,7 +45,7 @@ export default function Hero() {
         <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }} className="font-serif text-[clamp(42px,7vw,100px)] leading-[1.0] tracking-[-0.03em] text-white max-w-[1000px] mb-10">
           Connecting<br />
           <em className="not-italic italic text-white/55">Human Potential</em><br />
-          to the Power<br />
+          to the Future<br />
           of <span className="text-brand-orange">Business</span>
         </motion.h1>
 
