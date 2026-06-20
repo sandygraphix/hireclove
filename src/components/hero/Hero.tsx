@@ -24,6 +24,11 @@ const Counter = ({ to, suffix }: { to: number; suffix: string }) => {
 };
 
 export default function Hero() {
+  const handleScroll = (e: React.MouseEvent<HTMLButtonElement>, targetId: string) => {
+    e.preventDefault();
+    document.querySelector(targetId)?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section id="hero" className="relative min-h-screen bg-brand-black flex flex-col justify-end overflow-hidden pb-[100px] pt-[160px]">
       
@@ -39,7 +44,7 @@ export default function Hero() {
       <div className="relative z-20 mx-auto w-full max-w-[1320px] px-6 md:px-12">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="flex items-center gap-2.5 mb-9">
           <span className="w-1.5 h-1.5 bg-brand-orange rounded-full animate-pulse" />
-          <span className="font-mono text-[11px] tracking-[2px] uppercase text-white/45">Strategic Workforce Partner · Established India</span>
+          <span className="font-mono text-[11px] tracking-[2px] uppercase text-white/45">Strategic Workforce Partner · Established in India</span>
         </motion.div>
 
         <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }} className="font-serif text-[clamp(42px,7vw,100px)] leading-[1.0] tracking-[-0.03em] text-white max-w-[1000px] mb-10">
@@ -55,8 +60,19 @@ export default function Hero() {
               In a talent-constrained world, HireClove engineers workforce ecosystems — not just fills vacancies. We are the partner that turns your people strategy into competitive advantage.
             </p>
             <div className="flex flex-wrap items-center gap-3">
-              <button className="bg-brand-orange hover:bg-brand-orange-lt text-white px-7 py-3.5 rounded-[7px] font-semibold text-sm transition-all hover:-translate-y-0.5 shadow-[0_0_0_rgba(232,88,26,0)] hover:shadow-[0_12px_32px_rgba(232,88,26,0.35)]">Start a Conversation →</button>
-              <button className="border border-white/15 text-white/60 hover:text-white hover:border-white/35 px-6 py-3.5 rounded-[7px] font-medium text-sm transition-all hover:-translate-y-0.5">Explore Services</button>
+              {/* MERGED: Added onClick scroll functionality to buttons */}
+              <button 
+                onClick={(e) => handleScroll(e, "#contact")}
+                className="bg-brand-orange hover:bg-brand-orange-lt text-white px-7 py-3.5 rounded-[7px] font-semibold text-sm transition-all hover:-translate-y-0.5 shadow-[0_0_0_rgba(232,88,26,0)] hover:shadow-[0_12px_32px_rgba(232,88,26,0.35)]"
+              >
+                Start a Conversation →
+              </button>
+              <button 
+                onClick={(e) => handleScroll(e, "#services")}
+                className="border border-white/15 text-white/60 hover:text-white hover:border-white/35 px-6 py-3.5 rounded-[7px] font-medium text-sm transition-all hover:-translate-y-0.5"
+              >
+                Explore Services
+              </button>
             </div>
           </div>
         </motion.div>
