@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Serif_Display, Inter, DM_Mono } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 import Navbar from "@/components/navigation/Navbar";
 import "./globals.css";
@@ -22,6 +23,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <Navbar />
           <main className="relative flex flex-col">{children}</main>
         </SmoothScrollProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
