@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "DM Serif Display", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "DM Mono", monospace;
+  
+  --color-brand-black: #0A0A0A;
+  --color-brand-charcoal: #111111;
+  --color-brand-deep: #161616;
+  --color-brand-orange: #E8581A;
+  --color-brand-orange-lt: #FF7033;
+  --color-brand-warm: #F5F3EE;
+  --color-brand-offwhite: #FAFAF8;
+  --color-brand-midgray: #6B7280;
+}
+
+@layer base {
+  body {
+    @apply font-sans bg-brand-offwhite text-[#1A1A1A] antialiased overflow-x-hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-tight;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: var(--color-brand-charcoal); }
+  ::-webkit-scrollbar-thumb { background: var(--color-brand-orange); border-radius: 3px; }
+}
+
+@layer utilities {
+  .t-overline {
+    @apply font-mono text-[11px] tracking-[2.5px] uppercase text-brand-orange;
+  }
+  .o-rule {
+    @apply block w-[40px] h-[2px] bg-brand-orange mb-5;
+  }
+}
+@layer utilities {
+  .animate-marquee {
+    animation: marquee 30s linear infinite;
+  }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
