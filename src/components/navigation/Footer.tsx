@@ -1,3 +1,6 @@
+import Image from "next/image";
+import logo from "@/app/logo.svg";
+
 export default function Footer() {
   return (
     <footer className="bg-brand-charcoal border-t border-white/5 pt-20 pb-12">
@@ -5,9 +8,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-10 lg:gap-16 mb-16">
           
           <div>
-            <a href="#hero" className="inline-flex items-center gap-2.5 font-sans text-[18px] font-bold text-white tracking-[-0.02em] mb-5">
-              <div className="w-[34px] h-[34px] bg-brand-orange rounded-[7px] flex items-center justify-center text-[13px] font-extrabold tracking-[-0.5px]">HC</div>
-              Hire<em className="text-brand-orange not-italic">Clove</em>
+            {/* Updated Logo */}
+            <a href="#hero" className="inline-flex items-center mb-5">
+              <Image 
+                src={logo} 
+                alt="HireClove Logo" 
+                className="h-[34px] w-auto"
+              />
             </a>
             <p className="text-[14px] leading-[1.7] text-white/30 max-w-[280px]">
               Connecting human potential to the power of business. Workforce solutions engineered for the demands of modern organizations.
