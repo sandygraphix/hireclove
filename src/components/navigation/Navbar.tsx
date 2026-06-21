@@ -4,7 +4,9 @@ import { motion } from "framer-motion";
 import { useScroll } from "@/hooks/use-scroll"; 
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import PortfolioModal from "@/components/ui/PortfolioModal"; // ADDED THIS
+import Image from "next/image";
+import PortfolioModal from "@/components/ui/PortfolioModal"; 
+import logo from "@/app/logo.svg";
 
 const navLinks = [
   { name: "Who We Are", href: "#about" },
@@ -17,7 +19,7 @@ const navLinks = [
 export default function Navbar() {
   const isScrolled = useScroll(50);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false); // ADDED THIS
+  const [isModalOpen, setIsModalOpen] = useState(false); 
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -43,13 +45,13 @@ export default function Navbar() {
         <div className="mx-auto flex w-full max-w-[1320px] items-center justify-between px-6 md:px-12">
           
           {/* Logo */}
-          <a href="#hero" onClick={(e) => handleScroll(e, "#hero")} className="group flex items-center gap-2.5">
-            <div className="flex h-[34px] w-[34px] items-center justify-center rounded-[7px] bg-brand-orange text-[13px] font-extrabold tracking-[-0.5px] text-white transition-transform group-hover:scale-105">
-              HC
-            </div>
-            <span className="font-sans text-[18px] font-bold tracking-[-0.02em] text-white">
-              Hire<em className="not-italic text-brand-orange">Clove</em>
-            </span>
+          <a href="#hero" onClick={(e) => handleScroll(e, "#hero")} className="group flex items-center">
+            <Image 
+              src={logo} 
+              alt="HireClove Logo" 
+              className="h-[34px] w-auto transition-transform group-hover:scale-105"
+              priority
+            />
           </a>
 
           {/* Desktop Nav */}
@@ -68,7 +70,6 @@ export default function Navbar() {
 
           {/* CTA & Mobile Toggle */}
           <div className="flex items-center gap-4">
-            {/* CHANGED TO BUTTON TO OPEN MODAL */}
             <button 
               onClick={() => setIsModalOpen(true)}
               className="hidden rounded-[7px] bg-white/10 px-5 py-2.5 text-[13px] font-bold text-white transition-all hover:bg-brand-orange md:block"
@@ -98,7 +99,6 @@ export default function Navbar() {
                 {link.name}
               </a>
             ))}
-            {/* CHANGED TO BUTTON TO OPEN MODAL */}
             <button 
               onClick={() => {
                 setIsMobileMenuOpen(false);
