@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Serif_Display, Inter, DM_Mono } from "next/font/google";
+import Script from 'next/script';
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 import Navbar from "@/components/navigation/Navbar";
 import "./globals.css";
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
     siteName: "HireClove",
     images: [
       {
-        url: "/og-image.jpg", // We need to add this image to your public folder
+        url: "/og-image.jpg", 
         width: 1200,
         height: 630,
         alt: "HireClove Services LLP",
@@ -60,7 +61,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     "@type": "Organization",
     name: "HireClove Services LLP",
     url: "https://hireclove.com",
-    logo: "https://hireclove.com/logo.png", // Add your logo to the public folder
+    logo: "https://hireclove.com/logo.png", 
     contactPoint: {
       "@type": "ContactPoint",
       telephone: "+91-920-532-4877",
@@ -90,6 +91,24 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <Navbar />
           <main className="relative flex flex-col">{children}</main>
         </SmoothScrollProvider>
+
+        {/* 3. GOOGLE ANALYTICS */}
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-NRBHQX9YZF"
+        />
+        <Script
+          id="google-analytics-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-NRBHQX9YZF');
+            `,
+          }}
+        />
       </body>
     </html>
   );
